@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "374089863360",
+    "firebase_url": "https://case-slapit.firebaseio.com",
+    "project_id": "case-slapit",
+    "storage_bucket": "case-slapit.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:374089863360:android:386c114718fa7414",
+        "android_client_info": {
+          "package_name": "com.ggslap.caseit"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "374089863360-m7sfoeuc0u7qo70prhfmi6ftltqm3jjb.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ggslap.caseit",
+            "certificate_hash": "483b1f4485c76cb9b6e174474c7172ed0e083577"
+          }
+        },
+        {
+          "client_id": "374089863360-b623pupq142ljckqthn3n2b0h6hnlpnq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDM059sJWMRkL1DF13ud8TKRxfangZ6PYI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "374089863360-b623pupq142ljckqthn3n2b0h6hnlpnq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
