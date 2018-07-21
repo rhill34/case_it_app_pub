@@ -53,6 +53,8 @@ class LoginState extends State<Login> {
                   child: new FlatButton(
                       onPressed: () {
                         _handleSignIn();
+                        Navigator.of(context).pushNamedAndRemoveUntil(
+                            "/disclaimer", (_) => false);
                       },
                       child: new Text(
                         "Sign in with Google",
@@ -60,14 +62,14 @@ class LoginState extends State<Login> {
                             new TextStyle(color: Colors.white, fontSize: 18.0),
                       )),
                 ),
-                new FlatButton(
-                    onPressed: () {
-                      _showDisclaimer(context);
-                    },
-                    child: new Text(
-                      "By signing in, you agree to our terms of service",
-                      style: new TextStyle(color: Colors.white, fontSize: 15.0),
-                    )),
+//                new FlatButton(
+//                    onPressed: () {
+//                      _showDisclaimer(context);
+//                    },
+//                    child: new Text(
+//                      "By signing in, you agree to our terms of service",
+//                      style: new TextStyle(color: Colors.white, fontSize: 15.0),
+//                    )),
               ],
             ),
           ),
@@ -77,6 +79,87 @@ class LoginState extends State<Login> {
   }
 }
 //}
+
+class Disclaimer extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return new Scaffold(
+      appBar: new AppBar(
+        title: new Text("CASE IT"),
+        backgroundColor: highlineBlue,
+        centerTitle: true,
+      ),
+      backgroundColor: Colors.white,
+      body: new ListView(
+        children: <Widget>[
+          new Container(
+            padding: const EdgeInsets.all(10.0),
+            child: new Text(
+              "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?",
+              style: new TextStyle(fontSize: 16.0),
+            ),
+          ),
+        ],
+      ),
+      bottomNavigationBar: new Theme(
+        data: Theme.of(context).copyWith(
+          // sets the background color of the `BottomNavigationBar`
+            canvasColor: highlineBlue,
+            // sets the active color of the `BottomNavigationBar` if `Brightness` is light
+            primaryColor: highlineGreen,
+            textTheme: Theme
+                .of(context)
+                .textTheme
+                .copyWith(caption: new TextStyle(color: highlineBlue))), // sets the inactive color of the `BottomNavigationBar`
+        child: BottomNavigationBar(
+          items: [
+            new BottomNavigationBarItem(
+                icon: new Icon(Icons.not_interested, color: highlineGreen,),
+                title: new Text("Disagree".toUpperCase(),
+                  style: new TextStyle(
+                      color: highlineGreen,
+                      fontSize: 17.0,
+                      fontWeight: FontWeight.bold),
+                )),
+            new BottomNavigationBarItem(
+                icon: new Icon(Icons.check, color: highlineGreen,),
+                title: new Text(
+                  "Agree".toUpperCase(),
+                  style: new TextStyle(
+                      color: highlineGreen,
+                      fontSize: 17.0,
+                      fontWeight: FontWeight.bold),
+                )),
+          ],
+          currentIndex: 0,
+          onTap: (index) {
+            if (index == 0) {
+              Navigator.of(context).pushNamedAndRemoveUntil("/", (_) => false);
+            } else if (index == 1 && googleSignIn.currentUser != null) {
+              Navigator
+                  .of(context)
+                  .pushNamedAndRemoveUntil("/jobs", (_) => false);
+            } else {
+              var signInAlert = new AlertDialog(
+                content: new Text("Please sign in before agreeing"),
+                actions: <Widget>[
+                  new FlatButton(
+                      onPressed: () {
+                        Navigator.pop(context);
+                        _handleSignIn();
+                      },
+                      child: new Text("Ok"))
+                ],
+              );
+              showDialog(context: context, builder: (context) => signInAlert);
+            }
+          },
+        ),
+      ),
+
+    );
+  }
+}
 
 var highlineBlue = const Color(0xFF35556D);
 

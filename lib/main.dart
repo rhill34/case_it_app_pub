@@ -6,9 +6,10 @@ import './ui/jobs.dart';
 void main() {
   runApp(new MaterialApp(
     title: "CASE IT",
-    initialRoute: googleSignIn.isSignedIn() == null ? '/' : '/jobs',
+    initialRoute: googleSignIn.currentUser == null ? '/' : '/jobs',
     routes: {
       '/'     : (context) => Login(),
+      '/disclaimer' : (context) => Disclaimer(),
       '/jobs' : (context) => Jobs(),
       '/jobDetails' : (context) => JobDetails(),
     },
