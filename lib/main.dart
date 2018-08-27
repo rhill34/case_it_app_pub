@@ -11,7 +11,7 @@ void main() {
     initialRoute: '/cal',
     routes: {
       '/'     : (context) => Login(),
-      '/cal' : (context) => KalPage(title: "title"),
+      '/cal' : (context) => KalPage(title: "CASEit!"),
       '/disclaimer' : (context) => Disclaimer(),
       '/jobs' : (context) => Jobs(),
       '/jobDetails' : (context) => JobDetails(),
